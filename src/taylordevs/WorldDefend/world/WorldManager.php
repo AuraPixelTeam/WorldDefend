@@ -47,28 +47,21 @@ class WorldManager
             }
 
             $configPath = $worldPath . "worlddefend.yml";
-            if (!file_exists($configPath)) {
-                $config = new Config($configPath, Config::YAML, [
-                    WorldProperty::BUILD => false,
-                    WorldProperty::PVP => true,
-                    WorldProperty::NO_DECAY => false,
-                    WorldProperty::KEEP_INVENTORY => false,
-                    WorldProperty::KEEP_EXPERIENCE => false,
-                    WorldProperty::BAN_ITEM => [],
-                    WorldProperty::BAN_COMMAND => [],
-                    "config-version" => WorldManager::CONFIG_VERSION
-                ]);
-                $config->save();
-                WorldManager::$worlds[$world] = $config;
-            } else {
-                $config = new Config($configPath, Config::YAML);
-                if ($config->get("config-version") !== WorldManager::CONFIG_VERSION) {
-                    // TODO: Update config
-                }
-                if ($config->get("enabled", true)) {
-                    WorldManager::$worlds[$world] = $config;
-                }
+            $config = new Config($configPath, Config::YAML, [
+                WorldProperty::BUILD => false,
+                WorldProperty::PVP => false,
+                WorldProperty::NO_DECAY => false,
+                WorldProperty::KEEP_INVENTORY => false,
+                WorldProperty::KEEP_EXPERIENCE => false,
+                WorldProperty::BAN_ITEM => [],
+                WorldProperty::BAN_COMMAND => [],
+                "config-version" => WorldManager::CONFIG_VERSION
+            ]);
+            $config->save();
+            if ($config->get("config-version") !== WorldManager::CONFIG_VERSION) {
+                // TODO: Update config
             }
+            WorldManager::$worlds[$world] = $config;
         }
     }
 
