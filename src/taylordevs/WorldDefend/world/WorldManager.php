@@ -95,8 +95,8 @@ class WorldManager
     public static function addProperty(World $world, string $property, $value): bool
     {
         $worldName = $world->getDisplayName();
-        if (!WorldManager::isLoaded($worldName)) return;
-        if (!in_array($property, WorldManager::ARRAY_PROPERTIES)) return;
+        if (!WorldManager::isLoaded($worldName)) return false;
+        if (!in_array($property, WorldManager::ARRAY_PROPERTIES)) return false;
         $array = WorldManager::getProperty($world, $property);
         if (!is_array($array)) return false;
         if (!in_array($value, $array)) {
