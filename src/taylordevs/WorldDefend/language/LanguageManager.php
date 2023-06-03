@@ -46,8 +46,8 @@ class LanguageManager {
         return isset(LanguageManager::$languageData[$key]);
     }
 
-    public static function getTranslation(string $key, array $args = []): string {
-        return LanguageManager::hasTranslation($key) ? LanguageManager::replaceArgs($key, $args) : $key;
+    public static function getTranslation(string $key, array $replacements = []): string {
+        return LanguageManager::hasTranslation($key) ? LanguageManager::replaceArgs($key, $replacements) : $key;
     }
 
     protected static function replaceArgs(string $key, array $args): string {

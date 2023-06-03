@@ -1,1 +1,2 @@
 developmentMode: "This plugin is in development mode."
+world.locked: "{WORLD} do not allow you do this."
