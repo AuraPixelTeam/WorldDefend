@@ -8,4 +8,5 @@ enum KnownTranslations
 {
 
     const WORLD_LOCKED = "world.locked";
+    const WORLD_PVP = "world.no-pvp";
 }

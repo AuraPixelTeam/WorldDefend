@@ -32,7 +32,7 @@ class EntityDamageEvent
         if ($pvp) {
             $player->sendMessage(
                 message: LanguageManager::getTranslation(
-                    key: KnownTranslations::WORLD_LOCKED,
+                    key: KnownTranslations::WORLD_PVP,
                     replacements: [
                         TranslationKeys::WORLD => $world->getDisplayName()
                     ]
