@@ -20,7 +20,7 @@ class BlockBreakEvent implements Listener {
         $plugin->getServer()->getPluginManager()->registerEvent(
             PMBlockBreakEvent::class,
             \Closure::fromCallable([$this, "onBreakBlock"]),
-            EventPriority::HIGH,
+            EventPriority::HIGHEST,
             $plugin
         );
     }

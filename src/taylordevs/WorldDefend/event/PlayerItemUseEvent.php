@@ -20,7 +20,7 @@ class PlayerItemUseEvent implements Listener {
         $plugin->getServer()->getPluginManager()->registerEvent(
             PMPlayerItemUseEvent::class,
             \Closure::fromCallable([$this, "onItemUse"]),
-            EventPriority::HIGH,
+            EventPriority::HIGHEST,
             $plugin
         );
     }

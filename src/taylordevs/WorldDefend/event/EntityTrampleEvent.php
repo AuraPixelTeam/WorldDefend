@@ -17,7 +17,7 @@ class EntityTrampleEvent implements Listener {
         $plugin->getServer()->getPluginManager()->registerEvent(
             EntityTrampleFarmlandEvent::class,
             \Closure::fromCallable([$this, "onEntityTrample"]),
-            EventPriority::HIGH,
+            EventPriority::HIGHEST,
             $plugin
         );
     }

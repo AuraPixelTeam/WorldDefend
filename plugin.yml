@@ -5,3 +5,8 @@ main: taylordevs\WorldDefend\Loader
 author: taylordevs
 description: A plugin for PMMP that will defend the worlds
 website: https://github.com/taylordevs/WorldDefend
+
+permissions:
+    worlddefend.command:
+        description: Allows the player to use the command
+        default: true

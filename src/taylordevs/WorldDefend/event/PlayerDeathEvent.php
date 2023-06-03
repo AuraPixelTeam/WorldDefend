@@ -20,7 +20,7 @@ class PlayerDeathEvent implements Listener {
         $plugin->getServer()->getPluginManager()->registerEvent(
             PMPlayerDeathEvent::class,
             \Closure::fromCallable([$this, "onDeath"]),
-            EventPriority::HIGH,
+            EventPriority::HIGHEST,
             $plugin
         );
     }

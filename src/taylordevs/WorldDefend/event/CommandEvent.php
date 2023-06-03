@@ -21,7 +21,7 @@ class CommandEvent implements Listener {
         $plugin->getServer()->getPluginManager()->registerEvent(
             PMCommandEvent::class,
             \Closure::fromCallable([$this, "onCommand"]),
-            EventPriority::HIGH,
+            EventPriority::HIGHEST,
             $plugin
         );
     }

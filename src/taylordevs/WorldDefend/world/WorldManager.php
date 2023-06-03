@@ -8,8 +8,7 @@ use pocketmine\Server;
 use pocketmine\utils\Config;
 use pocketmine\world\World;
 
-class WorldManager
-{
+class WorldManager {
 
     protected const CONFIG_VERSION = "1.0.0";
     protected static array $worlds = [];
@@ -83,7 +82,7 @@ class WorldManager
         }
     }
 
-    public static function addProperty(World $world, string $property, $value): bool
+    public static function addProperty(World $world, string $property, mixed $value): bool
     {
         $worldName = $world->getDisplayName();
         if (!WorldManager::isLoaded($worldName)) return false;
@@ -92,6 +91,23 @@ class WorldManager
         if (!is_array($array)) return false;
         if (!in_array($value, $array)) {
             $array[] = $value;
+            WorldManager::$worlds[$worldName]->set($property, $array);
+            WorldManager::$worlds[$worldName]->save();
+            return true;
+        }
+        return false;
+    }
+
+    public static function removeProperty(World $world, string $property, mixed $value): bool
+    {
+        $worldName = $world->getDisplayName();
+        if (!WorldManager::isLoaded($worldName)) return false;
+        if (!in_array($property, WorldManager::ARRAY_PROPERTIES)) return false;
+        $array = WorldManager::getProperty($world, $property);
+        if (!is_array($array)) return false;
+        if (in_array($value, $array)) {
+            $key = array_search($value, $array);
+            unset($array[$key]);
             WorldManager::$worlds[$worldName]->set($property, $array);
             WorldManager::$worlds[$worldName]->save();
             return true;

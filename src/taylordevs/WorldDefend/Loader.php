@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace taylordevs\WorldDefend;
 
 use pocketmine\plugin\PluginBase;
+use taylordevs\WorldDefend\commands\WorldDefend;
 use taylordevs\WorldDefend\event\BlockBreakEvent;
 use taylordevs\WorldDefend\event\CommandEvent;
 use taylordevs\WorldDefend\event\EntityDamageEvent;
@@ -33,5 +34,9 @@ class Loader extends PluginBase {
         foreach (self::EVENTS as $event) {
             new $event($this);
         }
+        $this->getServer()->getCommandMap()->register(
+            fallbackPrefix: "worlddefend",
+            command: new WorldDefend($this)
+        );
     }
 }

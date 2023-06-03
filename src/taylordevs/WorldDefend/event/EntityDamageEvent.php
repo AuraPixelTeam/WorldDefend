@@ -22,7 +22,7 @@ class EntityDamageEvent implements Listener {
         $plugin->getServer()->getPluginManager()->registerEvent(
             PMEntityDamageEvent::class,
             \Closure::fromCallable([$this, "onEntityDamage"]),
-            EventPriority::HIGH,
+            EventPriority::HIGHEST,
             $plugin
         );
     }
