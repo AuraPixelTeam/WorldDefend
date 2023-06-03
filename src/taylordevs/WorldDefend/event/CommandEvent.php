@@ -10,6 +10,7 @@ use taylordevs\WorldDefend\language\KnownTranslations;
 use taylordevs\WorldDefend\language\LanguageManager;
 use taylordevs\WorldDefend\language\TranslationKeys;
 use taylordevs\WorldDefend\world\WorldManager;
+use taylordevs\WorldDefend\world\WorldProperty;
 
 class CommandEvent
 {
@@ -24,7 +25,7 @@ class CommandEvent
         $command = strtolower($commandLine[0] ?? '');
         $worldCommandBanned = WorldManager::getProperty(
             world: $world,
-            property: "cmd-ban"
+            property: WorldProperty::BAN_COMMAND
         );
         if (is_array($worldCommandBanned)) {
             if (in_array($command, $worldCommandBanned)) {

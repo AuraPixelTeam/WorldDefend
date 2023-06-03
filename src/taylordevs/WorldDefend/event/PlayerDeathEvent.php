@@ -9,6 +9,7 @@ use taylordevs\WorldDefend\language\KnownTranslations;
 use taylordevs\WorldDefend\language\LanguageManager;
 use taylordevs\WorldDefend\language\TranslationKeys;
 use taylordevs\WorldDefend\world\WorldManager;
+use taylordevs\WorldDefend\world\WorldProperty;
 
 class PlayerDeathEvent {
 
@@ -17,11 +18,11 @@ class PlayerDeathEvent {
         $world = $player->getWorld();
         $keepInventory = WorldManager::getProperty(
             world: $world,
-            property: "keep-inventory"
+            property: WorldProperty::KEEP_INVENTORY
         );
         $keepExperience = WorldManager::getProperty(
             world: $world,
-            property: "keep-experience"
+            property: WorldProperty::KEEP_EXPERIENCE
         );
         if ($keepInventory) {
             $event->setKeepInventory(true);

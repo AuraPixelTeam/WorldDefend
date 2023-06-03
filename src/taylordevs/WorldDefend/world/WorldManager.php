@@ -50,14 +50,13 @@ class WorldManager
             $configPath = $worldPath . "worlddefend.yml";
             if (!file_exists($configPath)) {
                 $config = new Config($configPath, Config::YAML, [
-                    "enabled" => true,
-                    "lock" => false,
-                    "pvp" => true,
-                    "no-decay" => false,
-                    "keep-inventory" => false,
-                    "keep-experience" => false,
-                    "item-ban" => [],
-                    "cmd-ban" => [],
+                    WorldProperty::BUILD => false,
+                    WorldProperty::PVP => true,
+                    WorldProperty::NO_DECAY => false,
+                    WorldProperty::KEEP_INVENTORY => false,
+                    WorldProperty::KEEP_EXPERIENCE => false,
+                    WorldProperty::BAN_ITEM => [],
+                    WorldProperty::BAN_COMMAND => [],
                     "config-version" => WorldManager::CONFIG_VERSION
                 ]);
                 $config->save();

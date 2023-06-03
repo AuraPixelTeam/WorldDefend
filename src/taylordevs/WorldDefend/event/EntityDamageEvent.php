@@ -11,6 +11,7 @@ use taylordevs\WorldDefend\language\KnownTranslations;
 use taylordevs\WorldDefend\language\LanguageManager;
 use taylordevs\WorldDefend\language\TranslationKeys;
 use taylordevs\WorldDefend\world\WorldManager;
+use taylordevs\WorldDefend\world\WorldProperty;
 
 class EntityDamageEvent
 {
@@ -27,7 +28,7 @@ class EntityDamageEvent
         $world = $player->getWorld();
         $pvp = WorldManager::getProperty(
             world: $world,
-            property: "pvp"
+            property: WorldProperty::PVP
         );
         if ($pvp) {
             $player->sendMessage(
