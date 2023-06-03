@@ -14,8 +14,7 @@ use taylordevs\WorldDefend\world\WorldManager;
 class BlockBreakEvent implements Listener
 {
 
-    public function onBreakBlock(PMBlockBreakEvent $event): void
-    {
+    public function onBreakBlock(PMBlockBreakEvent $event): void{
         $world = $event->getBlock()->getPosition()->getWorld();
         $isLock = WorldManager::getProperty(
             world: $world,
@@ -25,7 +24,7 @@ class BlockBreakEvent implements Listener
         if($isLock) {
             $player->sendMessage(
                 message: LanguageManager::getTranslation(
-                    key: KnownTranslations::WORLD_LOCKED,
+                    key: KnownTranslations::WORLD_BUILD,
                     replacements: [
                         TranslationKeys::WORLD => $world->getDisplayName()
                     ]

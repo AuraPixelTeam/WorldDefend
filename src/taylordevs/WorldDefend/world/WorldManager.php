@@ -54,8 +54,8 @@ class WorldManager
                     "lock" => false,
                     "pvp" => true,
                     "no-decay" => false,
-                    "save-inventory" => false,
-                    "save-xp" => false,
+                    "keep-inventory" => false,
+                    "keep-experience" => false,
                     "item-ban" => [],
                     "cmd-ban" => [],
                     "config-version" => WorldManager::CONFIG_VERSION

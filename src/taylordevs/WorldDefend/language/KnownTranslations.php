@@ -7,6 +7,8 @@ namespace taylordevs\WorldDefend\language;
 enum KnownTranslations
 {
 
-    const WORLD_LOCKED = "world.locked";
+    const WORLD_BUILD = "world.locked";
     const WORLD_PVP = "world.no-pvp";
+    const WORLD_KEEP_INVENTORY = "world.keep-inventory";
+    const WORLD_KEEP_EXPERIENCE = "world.keep-experience";
 }
