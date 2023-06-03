@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace taylordevs\WorldDefend\event;
 
-use pocketmine\event\block\BlockPlaceEvent as PMBBlockPlaceEvent;
+use pocketmine\event\block\BlockPlaceEvent as PMBlockPlaceEvent;
 use pocketmine\event\EventPriority;
 use pocketmine\event\Listener;
 use taylordevs\WorldDefend\language\KnownTranslations;
@@ -25,7 +25,7 @@ class BlockPlaceEvent implements Listener {
         );
     }
 
-    public function onPlaceBlock(PMBBlockPlaceEvent $event): void{
+    public function onPlaceBlock(PMBlockPlaceEvent $event): void{
         $world = $event->getPlayer()->getWorld();
         $isLock = WorldManager::getProperty(
             world: $world,
