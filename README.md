@@ -53,6 +53,7 @@
 This plugin will honour the server language configuration. The languages currently available are:
 - English (en-US)
 - Vietnamese (vi-VN)
+
 We would love to receive contributions on the missing languages or corrections on the existing ones. Please read [CONTRIBUTING.md](CONTRIBUTING.md) on how to do so.
 
 ## License
