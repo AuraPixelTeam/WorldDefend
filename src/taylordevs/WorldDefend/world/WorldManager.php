@@ -14,16 +14,15 @@ class WorldManager
     protected const CONFIG_VERSION = "1.0.0";
     protected static array $worlds = [];
     protected const BOOLEAN_PROPERTIES = [
-        "enabled",
-        "lock",
-        "pvp",
-        "no-decay",
-        "save-inventory",
-        "save-xp"
+        WorldProperty::BUILD,
+        WorldProperty::PVP,
+        WorldProperty::NO_DECAY,
+        WorldProperty::KEEP_INVENTORY,
+        WorldProperty::KEEP_EXPERIENCE
     ];
     protected const ARRAY_PROPERTIES = [
-        "item-ban",
-        "cmd-ban"
+        WorldProperty::BAN_ITEM,
+        WorldProperty::BAN_COMMAND
     ];
 
     protected static function isLoaded(string $worldName): bool
