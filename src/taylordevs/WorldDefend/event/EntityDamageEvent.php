@@ -6,15 +6,26 @@ namespace taylordevs\WorldDefend\event;
 
 use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\event\entity\EntityDamageEvent as PMEntityDamageEvent;
+use pocketmine\event\EventPriority;
+use pocketmine\event\Listener;
 use pocketmine\player\Player;
 use taylordevs\WorldDefend\language\KnownTranslations;
 use taylordevs\WorldDefend\language\LanguageManager;
 use taylordevs\WorldDefend\language\TranslationKeys;
+use taylordevs\WorldDefend\Loader;
 use taylordevs\WorldDefend\world\WorldManager;
 use taylordevs\WorldDefend\world\WorldProperty;
 
-class EntityDamageEvent
-{
+class EntityDamageEvent implements Listener {
+
+    public function __construct(Loader $plugin){
+        $plugin->getServer()->getPluginManager()->registerEvent(
+            PMEntityDamageEvent::class,
+            \Closure::fromCallable([$this, "onEntityDamage"]),
+            EventPriority::HIGH,
+            $plugin
+        );
+    }
 
     public function onEntityDamage(PMEntityDamageEvent $event): void {
         if ($event->isCancelled()) return;

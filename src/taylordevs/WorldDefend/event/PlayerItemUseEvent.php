@@ -4,15 +4,26 @@ declare(strict_types=1);
 
 namespace taylordevs\WorldDefend\event;
 
+use pocketmine\event\EventPriority;
+use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerItemUseEvent as PMPlayerItemUseEvent;
 use taylordevs\WorldDefend\language\KnownTranslations;
 use taylordevs\WorldDefend\language\LanguageManager;
 use taylordevs\WorldDefend\language\TranslationKeys;
+use taylordevs\WorldDefend\Loader;
 use taylordevs\WorldDefend\world\WorldManager;
 use taylordevs\WorldDefend\world\WorldProperty;
 
-class PlayerItemUseEvent
-{
+class PlayerItemUseEvent implements Listener {
+
+    public function __construct(Loader $plugin){
+        $plugin->getServer()->getPluginManager()->registerEvent(
+            PMPlayerItemUseEvent::class,
+            \Closure::fromCallable([$this, "onItemUse"]),
+            EventPriority::HIGH,
+            $plugin
+        );
+    }
 
     public function onItemUse(PMPlayerItemUseEvent $event): void
     {

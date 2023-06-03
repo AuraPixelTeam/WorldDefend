@@ -4,14 +4,26 @@ declare(strict_types=1);
 
 namespace taylordevs\WorldDefend\event;
 
+use pocketmine\event\EventPriority;
+use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerDeathEvent as PMPlayerDeathEvent;
 use taylordevs\WorldDefend\language\KnownTranslations;
 use taylordevs\WorldDefend\language\LanguageManager;
 use taylordevs\WorldDefend\language\TranslationKeys;
+use taylordevs\WorldDefend\Loader;
 use taylordevs\WorldDefend\world\WorldManager;
 use taylordevs\WorldDefend\world\WorldProperty;
 
-class PlayerDeathEvent {
+class PlayerDeathEvent implements Listener {
+
+    public function __construct(Loader $plugin){
+        $plugin->getServer()->getPluginManager()->registerEvent(
+            PMPlayerDeathEvent::class,
+            \Closure::fromCallable([$this, "onDeath"]),
+            EventPriority::HIGH,
+            $plugin
+        );
+    }
 
     public function onDeath(PMPlayerDeathEvent $event): void {
         $player = $event->getPlayer();
