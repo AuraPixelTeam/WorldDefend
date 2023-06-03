@@ -1,1 +1,6 @@
-developmentMode: "Plugin này đang trong chế độ phát triển."
+world.locked: "{WORLD} không cho phép bạn làm điều này."
+world.no-pvp: "{WORLD} không cho phép bạn làm điều này."
+world.keep-inventory: "{WORLD} đã giữ vật phẩm của bạn."
+world.keep-experience: "{WORLD} đã giữ kinh nghiệm của bạn."
+world.banned-item: "Vật phẩm {ITEM} bị cấm trong thế giới {WORLD}."
+world.banned-cmd: "Lệnh {COMMAND} bị cấm trong thế giới {WORLD}."

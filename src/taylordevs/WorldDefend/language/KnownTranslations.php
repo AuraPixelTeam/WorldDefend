@@ -12,4 +12,5 @@ enum KnownTranslations
     const WORLD_KEEP_INVENTORY = "world.keep-inventory";
     const WORLD_KEEP_EXPERIENCE = "world.keep-experience";
     const WORLD_BAN_ITEM = "world.ban-item";
+    const WORLD_BAN_COMMAND = "world.ban-cmd";
 }

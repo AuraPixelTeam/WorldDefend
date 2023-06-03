@@ -1,6 +1,6 @@
-developmentMode: "This plugin is in development mode."
 world.locked: "{WORLD} do not allow you do this."
 world.no-pvp: "{WORLD} do not allow you do this."
 world.keep-inventory: "{WORLD} has keep inventory."
 world.keep-experience: "{WORLD} has keep experience."
 world.banned-item: "{ITEM} is banned in {WORLD}."
+world.banned-cmd: "{COMMAND} is banned in {WORLD}."
