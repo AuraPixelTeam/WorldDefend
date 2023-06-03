@@ -1,0 +1,7 @@
+name: WorldDefend
+version: 0.0.1
+api: 5.0.0
+main: taylordevs\WorldDefend\Loader
+author: taylordevs
+description: A plugin for PMMP that will defend the worlds
+website: https://github.com/taylordevs/WorldDefend
