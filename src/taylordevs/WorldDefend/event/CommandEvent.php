@@ -39,7 +39,6 @@ class CommandEvent implements Listener {
         if($commandMap === null) return;
         $permissions = $commandMap->getPermissions();
         foreach ($permissions as $permission) {
-            var_dump($permission);
             if (in_array($permission, $worldCommandBanned)) {
                 $player->sendMessage(
                     message: LanguageManager::getTranslation(
@@ -52,6 +51,7 @@ class CommandEvent implements Listener {
                 );
                 $event->cancel();
             }
+            break;
         }
     }
 }

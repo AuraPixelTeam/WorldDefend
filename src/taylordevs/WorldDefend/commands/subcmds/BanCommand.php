@@ -44,25 +44,41 @@ class BanCommand
             );
             return;
         }
+        $commandMap = Server::getInstance()->getCommandMap()->getCommand($value);
+        if ($commandMap === null) {
+            $sender->sendMessage(
+                LanguageManager::getTranslation(
+                    KnownTranslations::COMMAND_BAN_COMMAND_NOT_FOUND,
+                    [
+                        TranslationKeys::COMMAND => $value
+                    ]
+                )
+            );
+            return;
+        }
         if ($type === "ban") {
-            WorldManager::addProperty(
-                world: $world,
-                property: WorldProperty::BAN_COMMAND,
-                value: $value
-            );
+            foreach ($commandMap->getPermissions() as $permission) {
+                WorldManager::addProperty(
+                    world: $world,
+                    property: WorldProperty::BAN_COMMAND,
+                    value: $permission
+                );
+            }
         } elseif ($type === "unban") {
-            WorldManager::removeProperty(
-                world: $world,
-                property: WorldProperty::BAN_COMMAND,
-                value: $value
-            );
+            foreach ($commandMap->getAliases() as $permission) {
+                WorldManager::removeProperty(
+                    world: $world,
+                    property: WorldProperty::BAN_COMMAND,
+                    value: $permission
+                );
+            }
         }
         $sender->sendMessage(
             LanguageManager::getTranslation(
                 ($type === "ban") ? KnownTranslations::COMMAND_BAN_COMMAND_SUCCESS : KnownTranslations::COMMAND_UNBAN_COMMAND_SUCCESS,
                 [
                     TranslationKeys::WORLD => $world->getDisplayName(),
-                    TranslationKeys::COMMAND_PERMISSION => $value
+                    TranslationKeys::COMMAND => $value
                 ]
             )
         );

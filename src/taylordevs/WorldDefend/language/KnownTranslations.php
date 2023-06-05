@@ -23,6 +23,7 @@ enum KnownTranslations {
     const COMMAND_BAN_ITEM_SUCCESS = "command.ban-item.success";
     const COMMAND_UNBAN_ITEM_SUCCESS = "command.ban-item.success";
     const COMMAND_BAN_COMMAND_USAGE = "command.ban-cmd.usage";
+    const COMMAND_BAN_COMMAND_NOT_FOUND = "command.ban-cmd.not-found";
     const COMMAND_BAN_COMMAND_SUCCESS = "command.ban-cmd.success";
     const COMMAND_UNBAN_COMMAND_SUCCESS = "command.unban-cmd.success";
     const WORLD_BUILD = "world.build";

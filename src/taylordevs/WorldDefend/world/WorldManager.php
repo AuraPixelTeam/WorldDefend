@@ -91,7 +91,7 @@ class WorldManager {
         if (!is_array($array)) return false;
         if (!in_array($value, $array)) {
             $array[] = $value;
-            WorldManager::$worlds[$worldName]->set($property, $array);
+            WorldManager::$worlds[$worldName]->set($property, array_values($array));
             WorldManager::$worlds[$worldName]->save();
             return true;
         }
@@ -108,7 +108,7 @@ class WorldManager {
         if (in_array($value, $array)) {
             $key = array_search($value, $array);
             unset($array[$key]);
-            WorldManager::$worlds[$worldName]->set($property, $array);
+            WorldManager::$worlds[$worldName]->set($property, array_values($array));
             WorldManager::$worlds[$worldName]->save();
             return true;
         }
