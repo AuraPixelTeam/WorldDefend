@@ -30,16 +30,17 @@ class CommandEvent implements Listener {
         $player = $event->getSender();
         if(!$player instanceof Player) return;
         $world = $player->getWorld();
-        $commandLine = trim($event->getCommand());
-        if ($commandLine === "") return;
-        $commandLine = preg_split("/\s+/", $commandLine);
-        $command = strtolower($commandLine[0] ?? '');
+        $command = $event->getCommand();
         $worldCommandBanned = WorldManager::getProperty(
             world: $world,
             property: WorldProperty::BAN_COMMAND
         );
-        if (is_array($worldCommandBanned)) {
-            if (in_array($command, $worldCommandBanned)) {
+        $commandMap = $player->getServer()->getCommandMap()->getCommand($command);
+        if($commandMap === null) return;
+        $permissions = $commandMap->getPermissions();
+        foreach ($permissions as $permission) {
+            var_dump($permission);
+            if (in_array($permission, $worldCommandBanned)) {
                 $player->sendMessage(
                     message: LanguageManager::getTranslation(
                         key: KnownTranslations::WORLD_BAN_COMMAND,

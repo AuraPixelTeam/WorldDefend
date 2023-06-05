@@ -9,5 +9,6 @@ enum TranslationKeys {
     const WORLD = "{WORLD}";
     const ITEM = "{ITEM}";
     const COMMAND = "{COMMAND}";
+    const COMMAND_PERMISSION = "{COMMAND_PERMISSION}";
     const VALUE = "{VALUE}";
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace taylordevs\WorldDefend\commands\subcmds;
 
 use pocketmine\command\CommandSender;
+use pocketmine\item\StringToItemParser;
 use pocketmine\item\VanillaItems;
 use pocketmine\player\Player;
 use pocketmine\Server;
@@ -27,7 +28,7 @@ class BanItem
         if ($sender instanceof Player) {
             $item = $sender->getInventory()->getItemInHand();
             if (!$item->equals(VanillaItems::AIR())) {
-                $value = $item->getTypeId();
+                $value = StringToItemParser::getInstance()->lookupAliases($item);
             }
         }
         if ($world === null) {
@@ -50,24 +51,28 @@ class BanItem
             return;
         }
         if ($type === "ban") {
-            WorldManager::addProperty(
-                world: $world,
-                property: WorldProperty::BAN_ITEM,
-                value: $value
-            );
+            foreach ($value as $item) {
+                WorldManager::addProperty(
+                    world: $world,
+                    property: WorldProperty::BAN_ITEM,
+                    value: $item
+                );
+            }
         } elseif ($type === "unban") {
-            WorldManager::removeProperty(
-                world: $world,
-                property: WorldProperty::BAN_ITEM,
-                value: $value
-            );
+            foreach ($value as $item) {
+                WorldManager::removeProperty(
+                    world: $world,
+                    property: WorldProperty::BAN_ITEM,
+                    value: $item
+                );
+            }
         }
         $sender->sendMessage(
             LanguageManager::getTranslation(
                 ($type === "ban") ? KnownTranslations::COMMAND_BAN_ITEM_SUCCESS : KnownTranslations::COMMAND_UNBAN_ITEM_SUCCESS,
                 [
                     TranslationKeys::WORLD => $world->getDisplayName(),
-                    TranslationKeys::ITEM => $value
+                    TranslationKeys::ITEM => implode(", ", $value)
                 ]
             )
         );

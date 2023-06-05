@@ -62,7 +62,7 @@ class BanCommand
                 ($type === "ban") ? KnownTranslations::COMMAND_BAN_COMMAND_SUCCESS : KnownTranslations::COMMAND_UNBAN_COMMAND_SUCCESS,
                 [
                     TranslationKeys::WORLD => $world->getDisplayName(),
-                    TranslationKeys::COMMAND => $value
+                    TranslationKeys::COMMAND_PERMISSION => $value
                 ]
             )
         );
