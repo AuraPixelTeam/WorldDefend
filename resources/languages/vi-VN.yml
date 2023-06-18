@@ -1,5 +1,5 @@
 command.permisison: "Bạn không có quyền sử dụng lệnh này."
-command.usage: "Sử dụng: /worlddefend <build|pvp|antidecay|keepinv|keepexp|banitem|bancmd> [world] [value]"
+command.usage: "Sử dụng: /worlddefend <build|pvp|antidecay|keepinv|keepexp|banitem|bancmd|gamemode> [world] [value]"
 command.world-not-found: "Thế giới {WORLD} không tồn tại."
 command.build.usage: "Sử dụng: /wd build <world> <true|false>"
 command.build.success: "Đã chỉnh cho phép xây dựng của thế giới {WORLD} thành {VALUE}."

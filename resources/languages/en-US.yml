@@ -1,5 +1,5 @@
 command.permisison: "You do not have permission to use this command."
-command.usage: "Usage: /worlddefend <build|pvp|antidecay|keepinv|keepexp|banitem|bancmd> [world] [value]"
+command.usage: "Usage: /worlddefend <build|pvp|antidecay|keepinv|keepexp|banitem|bancmd|gamemode> [world] [value]"
 command.world-not-found: "World {WORLD} not found."
 command.build.usage: "Usage: /wd build <world> <true|false>"
 command.build.success: "Set {WORLD} build to {VALUE}."
