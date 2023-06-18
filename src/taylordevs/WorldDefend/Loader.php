@@ -13,6 +13,7 @@ use taylordevs\WorldDefend\event\EntityDamageEvent;
 use taylordevs\WorldDefend\event\EntityTrampleEvent;
 use taylordevs\WorldDefend\event\PlayerDeathEvent;
 use taylordevs\WorldDefend\event\PlayerItemUseEvent;
+use taylordevs\WorldDefend\event\WorldPerGModeEvent;
 use taylordevs\WorldDefend\language\LanguageManager;
 use taylordevs\WorldDefend\world\WorldManager;
 
@@ -21,13 +22,17 @@ class Loader extends PluginBase {
     protected const EVENTS = [
         BlockBreakEvent::class,
         BlockPlaceEvent::class,
+        CommandEvent::class,
         EntityDamageEvent::class,
         EntityTrampleEvent::class,
         PlayerDeathEvent::class,
         PlayerItemUseEvent::class,
-        CommandEvent::class
+        WorldPerGModeEvent::class
     ];
 
+    /**
+     * @throws \JsonException
+     */
     protected function onEnable(): void
     {
         $this->saveDefaultConfig();

@@ -8,6 +8,8 @@ use taylordevs\WorldDefend\Loader;
 
 class LanguageManager {
 
+    protected const LANGUAGE_VERSION = "1.0.1";
+
     private const SUPPORTED_LANGUAGE = [
       "en-US",
       "vi-VN"

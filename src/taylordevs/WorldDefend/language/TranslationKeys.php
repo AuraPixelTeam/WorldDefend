@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace taylordevs\WorldDefend\language;
 
-enum TranslationKeys {
+enum TranslationKeys: string {
 
     const WORLD = "{WORLD}";
     const ITEM = "{ITEM}";

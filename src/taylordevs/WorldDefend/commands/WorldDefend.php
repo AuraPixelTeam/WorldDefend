@@ -12,6 +12,7 @@ use taylordevs\WorldDefend\commands\subcmds\AntiDecay;
 use taylordevs\WorldDefend\commands\subcmds\BanCommand;
 use taylordevs\WorldDefend\commands\subcmds\BanItem;
 use taylordevs\WorldDefend\commands\subcmds\Build;
+use taylordevs\WorldDefend\commands\subcmds\Gamemode;
 use taylordevs\WorldDefend\commands\subcmds\KeepExperience;
 use taylordevs\WorldDefend\commands\subcmds\KeepInventory;
 use taylordevs\WorldDefend\commands\subcmds\PvP;
@@ -50,6 +51,7 @@ class WorldDefend extends Command implements PluginOwned {
             'unbanitem' => new BanItem($sender, $args, 'unban'),
             'bancommand', 'bancmd' => new BanCommand($sender, $args, 'ban'),
             'unbancommand', 'unbancmd' => new BanCommand($sender, $args, 'unban'),
+            'gamemode', 'gm' => new Gamemode($sender, $args),
             default => $sender->sendMessage(
                 LanguageManager::getTranslation(
                     key: KnownTranslations::COMMAND_USAGE

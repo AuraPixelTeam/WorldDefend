@@ -7,6 +7,7 @@ namespace taylordevs\WorldDefend\event;
 use pocketmine\event\EventPriority;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerDeathEvent as PMPlayerDeathEvent;
+use ReflectionException;
 use taylordevs\WorldDefend\language\KnownTranslations;
 use taylordevs\WorldDefend\language\LanguageManager;
 use taylordevs\WorldDefend\language\TranslationKeys;
@@ -16,10 +17,13 @@ use taylordevs\WorldDefend\world\WorldProperty;
 
 class PlayerDeathEvent implements Listener {
 
+    /**
+     * @throws ReflectionException
+     */
     public function __construct(Loader $plugin){
         $plugin->getServer()->getPluginManager()->registerEvent(
             PMPlayerDeathEvent::class,
-            \Closure::fromCallable([$this, "onDeath"]),
+            $this->onDeath(...),
             EventPriority::HIGHEST,
             $plugin
         );

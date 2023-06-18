@@ -8,6 +8,7 @@ use pocketmine\event\EventPriority;
 use pocketmine\event\Listener;
 use pocketmine\event\server\CommandEvent as PMCommandEvent;
 use pocketmine\player\Player;
+use ReflectionException;
 use taylordevs\WorldDefend\language\KnownTranslations;
 use taylordevs\WorldDefend\language\LanguageManager;
 use taylordevs\WorldDefend\language\TranslationKeys;
@@ -17,10 +18,13 @@ use taylordevs\WorldDefend\world\WorldProperty;
 
 class CommandEvent implements Listener {
 
+    /**
+     * @throws ReflectionException
+     */
     public function __construct(Loader $plugin){
         $plugin->getServer()->getPluginManager()->registerEvent(
             PMCommandEvent::class,
-            \Closure::fromCallable([$this, "onCommand"]),
+            $this->onCommand(...),
             EventPriority::HIGHEST,
             $plugin
         );

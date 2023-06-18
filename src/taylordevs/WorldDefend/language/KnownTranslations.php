@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace taylordevs\WorldDefend\language;
 
-enum KnownTranslations {
+enum KnownTranslations: string {
 
     const COMMAND_PERMISSION = "command.permission";
     const COMMAND_WORLD_NOT_FOUND = "command.world-not-found";
@@ -26,6 +26,10 @@ enum KnownTranslations {
     const COMMAND_BAN_COMMAND_NOT_FOUND = "command.ban-cmd.not-found";
     const COMMAND_BAN_COMMAND_SUCCESS = "command.ban-cmd.success";
     const COMMAND_UNBAN_COMMAND_SUCCESS = "command.unban-cmd.success";
+
+    const COMMAND_GAMEMODE_USAGE = "command.gamemode.usage";
+    const COMMAND_GAMEMODE_SUCCESS = "command.gamemode.success";
+    const COMMAND_GAMEMODE_NOT_FOUND = "command.gamemode.not-found";
     const WORLD_BUILD = "world.build";
     const WORLD_PVP = "world.no-pvp";
     const WORLD_KEEP_INVENTORY = "world.keep-inventory";

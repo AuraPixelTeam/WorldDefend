@@ -45,7 +45,7 @@
 
 ## TODO
 - [ ] World Border
-- [ ] Per world gamemode
+- [x] Per world gamemode
 - [ ] Limit player in world
 - [ ] No explode in world
 

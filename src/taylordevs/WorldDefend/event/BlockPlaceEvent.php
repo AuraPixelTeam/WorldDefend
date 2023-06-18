@@ -7,6 +7,7 @@ namespace taylordevs\WorldDefend\event;
 use pocketmine\event\block\BlockPlaceEvent as PMBlockPlaceEvent;
 use pocketmine\event\EventPriority;
 use pocketmine\event\Listener;
+use ReflectionException;
 use taylordevs\WorldDefend\language\KnownTranslations;
 use taylordevs\WorldDefend\language\LanguageManager;
 use taylordevs\WorldDefend\language\TranslationKeys;
@@ -16,10 +17,13 @@ use taylordevs\WorldDefend\world\WorldProperty;
 
 class BlockPlaceEvent implements Listener {
 
+    /**
+     * @throws ReflectionException
+     */
     public function __construct(Loader $plugin){
         $plugin->getServer()->getPluginManager()->registerEvent(
             PMBlockPlaceEvent::class,
-            \Closure::fromCallable([$this, "onPlaceBlock"]),
+            $this->onPlaceBlock(...),
             EventPriority::HIGHEST,
             $plugin
         );

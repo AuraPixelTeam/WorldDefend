@@ -9,9 +9,8 @@ use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent as PMPlayerInteractEvent;
 use pocketmine\event\player\PlayerItemUseEvent as PMPlayerItemUseEvent;
 use pocketmine\event\block\BlockBreakEvent as PMBlockBreakEvent;
-use pocketmine\item\Item;
 use pocketmine\item\StringToItemParser;
-use pocketmine\world\World;
+use ReflectionException;
 use taylordevs\WorldDefend\language\KnownTranslations;
 use taylordevs\WorldDefend\language\LanguageManager;
 use taylordevs\WorldDefend\language\TranslationKeys;
@@ -21,22 +20,25 @@ use taylordevs\WorldDefend\world\WorldProperty;
 
 class PlayerItemUseEvent implements Listener {
 
+    /**
+     * @throws ReflectionException
+     */
     public function __construct(Loader $plugin){
         $plugin->getServer()->getPluginManager()->registerEvent(
             PMPlayerItemUseEvent::class,
-            \Closure::fromCallable([$this, "onItemUse"]),
+            $this->onItemUse(...),
             EventPriority::HIGHEST,
             $plugin
         );
         $plugin->getServer()->getPluginManager()->registerEvent(
             PMPlayerInteractEvent::class,
-            \Closure::fromCallable([$this, "onInteract"]),
+            $this->onInteract(...),
             EventPriority::HIGHEST,
             $plugin
         );
         $plugin->getServer()->getPluginManager()->registerEvent(
             PMBlockBreakEvent::class,
-            \Closure::fromCallable([$this, "onBreak"]),
+            $this->onBreak(...),
             EventPriority::HIGHEST,
             $plugin
         );
