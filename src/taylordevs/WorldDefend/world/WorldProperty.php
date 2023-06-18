@@ -12,6 +12,5 @@ enum WorldProperty: string {
     const KEEP_EXPERIENCE = "keep-experience";
     const BAN_ITEM = "item-ban";
     const BAN_COMMAND = "cmd-ban";
-
     const GAMEMODE = "gamemode";
 }
