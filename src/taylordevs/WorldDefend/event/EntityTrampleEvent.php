@@ -32,7 +32,7 @@ class EntityTrampleEvent implements Listener {
         $trample = WorldManager::getProperty(
             world: $world,
             property: WorldProperty::NO_DECAY
-        );
+        ) ?? false;
         if ($trample) {
             $event->cancel();
         }

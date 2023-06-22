@@ -35,11 +35,11 @@ class PlayerDeathEvent implements Listener {
         $keepInventory = WorldManager::getProperty(
             world: $world,
             property: WorldProperty::KEEP_INVENTORY
-        );
+        ) ?? false;
         $keepExperience = WorldManager::getProperty(
             world: $world,
             property: WorldProperty::KEEP_EXPERIENCE
-        );
+        ) ?? false;
         if ($keepInventory) {
             $event->setKeepInventory(true);
             $player->sendMessage(

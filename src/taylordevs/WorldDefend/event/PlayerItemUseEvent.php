@@ -63,7 +63,7 @@ class PlayerItemUseEvent implements Listener {
         $worldItemBanned = WorldManager::getProperty(
             world: $world,
             property: WorldProperty::BAN_ITEM
-        );
+        ) ?? [];
         if (is_array($worldItemBanned)) {
             if (!empty(array_intersect($itemAliases, $worldItemBanned))) {
                 $player->sendMessage(

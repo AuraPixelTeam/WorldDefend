@@ -38,7 +38,7 @@ class CommandEvent implements Listener {
         $worldCommandBanned = WorldManager::getProperty(
             world: $world,
             property: WorldProperty::BAN_COMMAND
-        );
+        ) ?? [];
         $commandMap = $player->getServer()->getCommandMap()->getCommand($command);
         if($commandMap === null) return;
         $permissions = $commandMap->getPermissions();

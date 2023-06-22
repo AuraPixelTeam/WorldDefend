@@ -59,17 +59,27 @@ class WorldManager {
         }
     }
 
-    public static function getProperty(World $world, string $property): string|bool|array
+    protected static function checkData(World $world): void {
+        $worldName = $world->getDisplayName();
+        if (!WorldManager::isLoaded($worldName)) {
+            $worldPath = $world->getProvider()->getPath();
+            $configPath = $worldPath . "worlddefend.yml";
+            $config = WorldManager::createConfig($configPath);
+            $config->save();
+            WorldManager::$worlds[$worldName] = $config;
+        }
+    }
+    public static function getProperty(World $world, string $property): string|bool|array|null
     {
         $worldName = $world->getDisplayName();
-        if (!WorldManager::isLoaded($worldName)) return false;
-        return WorldManager::$worlds[$worldName]->get($property, false);
+        WorldManager::checkData($world);
+        return WorldManager::$worlds[$worldName]->get($property, null);
     }
 
     public static function setProperty(World $world, string $property, string|bool $value): void
     {
         $worldName = $world->getDisplayName();
-        if (!WorldManager::isLoaded($worldName)) return;
+        WorldManager::checkData($world);
         if (in_array($property, WorldManager::ARRAY_PROPERTIES)) return;
         if (
             in_array($property, WorldManager::BOOLEAN_PROPERTIES) ||
@@ -83,7 +93,7 @@ class WorldManager {
     public static function addProperty(World $world, string $property, mixed $value): bool
     {
         $worldName = $world->getDisplayName();
-        if (!WorldManager::isLoaded($worldName)) return false;
+        WorldManager::checkData($world);
         if (!in_array($property, WorldManager::ARRAY_PROPERTIES)) return false;
         $array = WorldManager::getProperty($world, $property);
         if (!is_array($array)) return false;
@@ -99,7 +109,7 @@ class WorldManager {
     public static function removeProperty(World $world, string $property, mixed $value): bool
     {
         $worldName = $world->getDisplayName();
-        if (!WorldManager::isLoaded($worldName)) return false;
+        WorldManager::checkData($world);
         if (!in_array($property, WorldManager::ARRAY_PROPERTIES)) return false;
         $array = WorldManager::getProperty($world, $property);
         if (!is_array($array)) return false;

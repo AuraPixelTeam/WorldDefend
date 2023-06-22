@@ -34,7 +34,7 @@ class BlockPlaceEvent implements Listener {
         $isLock = WorldManager::getProperty(
             world: $world,
             property: WorldProperty::BUILD
-        );
+        ) ?? false;
         $player = $event->getPlayer();
         if($isLock) {
             $player->sendMessage(

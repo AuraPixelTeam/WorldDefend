@@ -43,7 +43,7 @@ class WorldPerGModeEvent
         $GameMode = WorldManager::getProperty(
             world: $world,
             property: WorldProperty::GAMEMODE
-        );
+        ) ?? false;
         if ($player instanceof Player) {
             if ($this->isChange($player, $world) && $GameMode !== false) {
                 $GameMode = GameMode::fromString($GameMode);

@@ -44,7 +44,7 @@ class EntityDamageEvent implements Listener {
         $pvp = WorldManager::getProperty(
             world: $world,
             property: WorldProperty::PVP
-        );
+        ) ?? false;
         if ($pvp) {
             $damage->sendMessage(
                 message: LanguageManager::getTranslation(
