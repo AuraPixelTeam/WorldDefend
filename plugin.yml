@@ -10,3 +10,6 @@ permissions:
     worlddefend.command:
         description: Allows the player to use the command
         default: true
+    worlddefend.build.bypass:
+        description: Allows the player to bypass the build protection
+        default: op

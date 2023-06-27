@@ -32,9 +32,10 @@
 | `/wd unbancmd`   | Unban command in world.           |
 
 ## Permissions
-| Permission       | Description                       |
-|------------------|-----------------------------------|
-| `worlddefend.command` | Allow use all commands.       |
+| Permission                 | Description                              |
+|----------------------------|------------------------------------------|
+| `worlddefend.command`      | Allow use all commands.                  |
+| `worlddefend.build.bypass` | allows players to build in locked worlds |
 
 ## Documentation
 - This plugin allows you to protect your world from grief, break, pvp, command, item, decay.

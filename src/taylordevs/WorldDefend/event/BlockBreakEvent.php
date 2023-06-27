@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace taylordevs\WorldDefend\event;
 
 use pocketmine\event\block\BlockBreakEvent as PMBlockBreakEvent;
+use pocketmine\event\block\BlockPlaceEvent as PMBlockPlaceEvent;
 use pocketmine\event\EventPriority;
 use pocketmine\event\Listener;
 use ReflectionException;
@@ -27,16 +28,34 @@ class BlockBreakEvent implements Listener {
             EventPriority::HIGHEST,
             $plugin
         );
+        $plugin->getServer()->getPluginManager()->registerEvent(
+            PMBlockPlaceEvent::class,
+            $this->onPlaceBlock(...),
+            EventPriority::HIGHEST,
+            $plugin
+        );
     }
 
     public function onBreakBlock(PMBlockBreakEvent $event): void{
-        $world = $event->getBlock()->getPosition()->getWorld();
+        $this->checkBreak($event);
+    }
+
+    public function onPlaceBlock(PMBlockPlaceEvent $event): void
+    {
+        $this->checkBreak($event);
+    }
+
+    protected function checkBreak(PMBlockBreakEvent|PMBlockPlaceEvent $event): void {
+        $world = $event->getPlayer()->getWorld();
         $isLock = WorldManager::getProperty(
             world: $world,
             property: WorldProperty::BUILD
         ) ?? false;
         $player = $event->getPlayer();
-        if($isLock) {
+        if (
+            $isLock &&
+            !$player->hasPermission("worlddefend.build.bypass")
+        ) {
             $player->sendMessage(
                 message: LanguageManager::getTranslation(
                     key: KnownTranslations::WORLD_BUILD,
