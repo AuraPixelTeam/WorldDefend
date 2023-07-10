@@ -24,12 +24,20 @@ class BanItem
 
     protected function execute(CommandSender $sender, array $args, string $type): void {
         $world = Server::getInstance()->getWorldManager()->getWorldByName($args[0] ?? "");
-        $value = $args[1] ?? "";
-        if ($sender instanceof Player) {
+        $value = StringToItemParser::getInstance()->parse($args[1] ?? "");
+        if ($sender instanceof Player && $value === null) {
             $item = $sender->getInventory()->getItemInHand();
             if (!$item->equals(VanillaItems::AIR())) {
                 $value = StringToItemParser::getInstance()->lookupAliases($item);
             }
+        }
+        if ($value === null) {
+            $sender->sendMessage(
+                LanguageManager::getTranslation(
+                    KnownTranslations::COMMAND_BAN_ITEM_USAGE
+                )
+            );
+            return;
         }
         if ($world === null) {
             $sender->sendMessage(
@@ -38,14 +46,6 @@ class BanItem
                     [
                         TranslationKeys::WORLD => $args[0] ?? ""
                     ]
-                )
-            );
-            return;
-        }
-        if ($value === "") {
-            $sender->sendMessage(
-                LanguageManager::getTranslation(
-                    KnownTranslations::COMMAND_BAN_ITEM_USAGE
                 )
             );
             return;

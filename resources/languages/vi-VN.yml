@@ -11,7 +11,7 @@ command.keep-inventory.usage: "Sử dụng: /wd keepinventory <world> <true|fals
 command.keep-inventory.success: "Đã chỉnh cho phép giữ kho đồ của thế giới {WORLD} thành {VALUE}."
 command.keep-experience.usage: "Sử dụng: /wd keepexperience <world> <true|false>"
 command.keep-experience.success: "Đã chỉnh cho phép giữ kinh nghiệm của thế giới {WORLD} thành {VALUE}."
-command.ban-item.usage: "Sử dụng: /wd banitem <world> <item>"
+command.ban-item.usage: "Sử dụng: /wd banitem <world> <itemName>"
 command.ban-item.success: "Vật phẩm {ITEM} đã bị cấm tại {WORLD}"
 command.unban-item.success: "Vật phẩm {ITEM} đã bị bỏ cấm tại {WORLD}"
 command.ban-cmd.usage: "Sử dụng: /wd bancmd <world> <command>"
