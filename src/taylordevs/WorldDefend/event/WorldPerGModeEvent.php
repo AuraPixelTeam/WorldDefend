@@ -45,7 +45,7 @@ class WorldPerGModeEvent
             property: WorldProperty::GAMEMODE
         ) ?? false;
         if ($player instanceof Player) {
-            if ($this->isChange($player, $world) && $GameMode !== false) {
+            if ($this->isChange($player, $world) && is_string($GameMode)) {
                 $GameMode = GameMode::fromString($GameMode);
                 $player->setGamemode($GameMode);
             }
