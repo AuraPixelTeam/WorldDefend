@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace taylordevs\WorldDefend\commands\subcmds;
 
 use pocketmine\command\CommandSender;
+use pocketmine\item\Item;
 use pocketmine\item\StringToItemParser;
 use pocketmine\item\VanillaItems;
 use pocketmine\player\Player;
@@ -25,6 +26,9 @@ class BanItem
     protected function execute(CommandSender $sender, array $args, string $type): void {
         $world = Server::getInstance()->getWorldManager()->getWorldByName($args[0] ?? "");
         $value = StringToItemParser::getInstance()->parse($args[1] ?? "");
+        if ($value instanceof Item) {
+            StringToItemParser::getInstance()->lookupAliases($value);
+        }
         if ($sender instanceof Player && $value === null) {
             $item = $sender->getInventory()->getItemInHand();
             if (!$item->equals(VanillaItems::AIR())) {
