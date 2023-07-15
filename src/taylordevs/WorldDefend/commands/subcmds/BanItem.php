@@ -27,7 +27,7 @@ class BanItem
         $world = Server::getInstance()->getWorldManager()->getWorldByName($args[0] ?? "");
         $value = StringToItemParser::getInstance()->parse($args[1] ?? "");
         if ($value instanceof Item) {
-            StringToItemParser::getInstance()->lookupAliases($value);
+            $value = StringToItemParser::getInstance()->lookupAliases($value);
         }
         if ($sender instanceof Player && $value === null) {
             $item = $sender->getInventory()->getItemInHand();
