@@ -9,7 +9,7 @@ website: https://github.com/taylordevs/WorldDefend
 permissions:
     worlddefend.command:
         description: Allows the player to use the command
-        default: true
+        default: op
     worlddefend.build.bypass:
         description: Allows the player to bypass the build protection
         default: op
